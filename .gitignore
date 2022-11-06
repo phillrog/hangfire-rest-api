@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+/hangfire/.vs/hangfire
+/hangfire/hangfire.api/obj
+/hangfire/hangfire.api/bin/Debug/net6.0
