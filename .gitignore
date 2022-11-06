@@ -6,3 +6,7 @@
 /hangfire/.vs/hangfire
 /hangfire/hangfire.api/obj
 /hangfire/hangfire.api/bin/Debug/net6.0
+/api/hangfire.api/obj
+/api/hangfire.api/Properties/launchSettings.json
+/api/hangfire.api/bin/Debug/net6.0
+/api/.vs
