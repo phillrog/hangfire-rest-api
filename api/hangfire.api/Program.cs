@@ -1,4 +1,5 @@
 using hangfire.api.Configurations;
+using Hangfire;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,9 +7,19 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 builder.Configuration.AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
                 optional: true).AddEnvironmentVariables();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Total",
+        builder =>
+            builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+});
 
 builder.Services.AddHangFireConfiguration(builder.Configuration);
 
+builder.Services.AddHealthChecks();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -29,6 +40,14 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseHangfireDashboard();
+
 app.MapControllers();
+
+app.MapHangfireDashboard();
+
+app.UseHealthChecks("/health");
+
+app.UseCors("Total");
 
 app.Run();
