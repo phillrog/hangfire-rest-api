@@ -1,4 +1,6 @@
-﻿namespace hangfire.api.Models
+﻿using hangfire.api.Enums;
+
+namespace hangfire.api.Models
 {
     public class Agendamento
     {
@@ -10,5 +12,6 @@
         public string? Body { get; set; }
         public DateTime DataAgendamento { get; set; }
         public DateTime DataInicio { get; set; }
+        public TipoAgendamentoEnum TipoAgendamento { get; set; }
     }
 }
