@@ -1,4 +1,6 @@
-﻿using hangfire.api.Models;
+﻿using hangfire.api.Enums;
+using hangfire.api.Models;
+using hangfire.api.Services;
 using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,19 +8,22 @@ namespace hangfire.api.Controllers
 {
     public class TarefaController : ControllerBase
     {
-        [HttpPost("Agendar")]
-        public Task<IActionResult> Agendar([FromBody] Agendamento agendamento)
+        private readonly IAgendadorService _agendadorService;
+
+        public TarefaController(IAgendadorService agendadorService)
         {
-            var dataAgendamento = agendamento.DataAgendamento;
+            _agendadorService = agendadorService;
+        }
 
-            agendamento.DataInicio = DateTime.Now;
-
-            var minutes = (dataAgendamento - DateTime.Now).TotalMinutes;
-
-            var dateTimeOffset = DateTimeOffset.Now.AddMinutes(minutes);
-
-            //var jobId = BackgroundJob.Schedule(() => REQUEST, dateTimeOffset);
-
+        [HttpPost("Agendar")]
+        public async Task<IActionResult> Agendar([FromBody] Agendamento agendamento)
+        {
+            switch (agendamento.TipoAgendamento)
+            {
+                case TipoAgendamentoEnum.UnicoImediato:
+                    await _agendadorService.AgendarTarefaUnicaImediata(agendamento); break;
+            }
+            
             return Ok();
         }
     }
