@@ -7,6 +7,8 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 builder.Configuration.AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json",
                 optional: true).AddEnvironmentVariables();
 
+builder.Services.RegisterServices();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Total",
