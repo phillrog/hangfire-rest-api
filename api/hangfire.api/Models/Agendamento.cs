@@ -13,5 +13,7 @@ namespace hangfire.api.Models
         public DateTime DataAgendamento { get; set; }
         public DateTime DataInicio { get; set; }
         public TipoAgendamentoEnum TipoAgendamento { get; set; }
+        public TipoVerboEnum TipoVerbo { get; set; }
+        public bool Async { get; set; }
     }
 }
