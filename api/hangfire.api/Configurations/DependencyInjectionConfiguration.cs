@@ -7,6 +7,7 @@ namespace hangfire.api.Configurations
         public static void RegisterServices(this IServiceCollection services)
         {
             services.AddScoped<IAgendadorService, AgendadorService>();
+            services.AddScoped<IRestService, RestService>();
         }
     }
 }
