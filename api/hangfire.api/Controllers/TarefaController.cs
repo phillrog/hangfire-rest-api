@@ -1,4 +1,5 @@
 ﻿using hangfire.api.Enums;
+using hangfire.api.Extensions;
 using hangfire.api.Models;
 using hangfire.api.Services;
 using Hangfire;
@@ -20,11 +21,13 @@ namespace hangfire.api.Controllers
         {
             switch (agendamento.TipoAgendamento)
             {
-                case TipoAgendamentoEnum.UnicoImediato:
-                    await _agendadorService.AgendarTarefaUnicaImediata(agendamento); break;
+                case TipoAgendamentoEnum.UnicoImediato: _agendadorService.AgendarTarefaUnicaImediata(agendamento); break;
             }
-            
-            return Ok();
+
+            var tiposAgendamentos = typeof(TipoAgendamentoEnum).ToEnumList();
+            var tipoAgendamento = tiposAgendamentos[(int)agendamento.TipoAgendamento];
+
+            return Ok(new { sucesso = $"Agendamento '{tipoAgendamento}' de tarefa realizado com sucesso" });
         }
     }
 }
