@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>Novo agendamento</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="nome" class="label">Nome</label>
+              <input type="text" nbInput fullWidth placeholder="Nome" name="nome">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="url" class="label">Url</label>
+              <input type="text" nbInput fullWidth placeholder="url">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="tipoAgendamento" class="label">Tipo de agendamento</label>
+              <nb-select placeholder="Tipo de agendamento" fullWidth name="tipoAgendamento">
+                <nb-option value="1">Option 1</nb-option>
+                <nb-option value="2">Option 2</nb-option>
+                <nb-option value="3">Option 3</nb-option>
+                <nb-option value="4">Option 4</nb-option>
+              </nb-select>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="dataAgendamento" class="label">Data do agendamento</label>
+              <input fullWidth nbInput placeholder="Data do agendamento" [nbDatepicker]="dateTimePicker"
+                name="dataAgendamento">
+              <nb-datepicker format="dd/MM/yyyy" #dateTimePicker></nb-datepicker>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="tipoServico" class="label">Tipo de serviço</label>
+              <nb-select placeholder="Tipo de serviço" fullWidth name="tipoServico">
+                <nb-option value="1">Option 1</nb-option>
+                <nb-option value="2">Option 2</nb-option>
+                <nb-option value="3">Option 3</nb-option>
+                <nb-option value="4">Option 4</nb-option>
+              </nb-select>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label for="tipoVerbo" class="label">Tipo de verbo</label>
+              <nb-select placeholder="Tipo de verbo" fullWidth name="tipoVerbo">
+                <nb-option value="1">GET</nb-option>
+                <nb-option value="2">POST</nb-option>
+                <nb-option value="3">PUT</nb-option>
+                <nb-option value="4">DELETE</nb-option>
+              </nb-select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label for="payload" class="label">Payload</label>
+              <textarea nbInput fullWidth placeholder="Payload" name="payload" rows="10" cols="80"></textarea>
+            </div>
+          </div>
+        </div>
+        <section class="row">
+          <div class="col-lg-12 text-right">
+            <button nbButton status="primary">Salvar</button>
+            <button nbButton status="basic">Fechar</button>
+          </div>
+        </section>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
