@@ -1,4 +1,5 @@
 using hangfire.api.Configurations;
+using hangfire.api.Filters;
 using Hangfire;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,7 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
@@ -46,7 +47,10 @@ app.UseHangfireDashboard();
 
 app.MapControllers();
 
-app.MapHangfireDashboard();
+app.MapHangfireDashboard("/hangfire", new DashboardOptions
+{
+    Authorization = new[] { new HangFireAuthorizationFilter() }
+});
 
 app.UseHealthChecks("/health");
 

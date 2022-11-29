@@ -10,3 +10,6 @@
 /api/hangfire.api/Properties/launchSettings.json
 /api/hangfire.api/bin/Debug/net6.0
 /api/.vs
+/api/bin/Debug
+/api/execute/obj/Docker
+/api/obj
