@@ -12,7 +12,7 @@ namespace hangfire.api.Configurations
                                     .UseSimpleAssemblyNameTypeSerializer()
                                     .UseRecommendedSerializerSettings()
                                     .UseSqlServerStorage(
-                                        app.GetConnectionString("agendamento_db"), new SqlServerStorageOptions
+                                        app.GetConnectionString("AgendamentoDb"), new SqlServerStorageOptions
                                         {
                                             TransactionTimeout = TimeSpan.FromMinutes(60),
                                             CommandTimeout = TimeSpan.FromMinutes(60),
@@ -23,7 +23,6 @@ namespace hangfire.api.Configurations
                                             DisableGlobalLocks = true
                                         }
                                     )
-                                    .UseSerilogLogProvider()
                                 );
             services.AddHangfireServer();
         }
