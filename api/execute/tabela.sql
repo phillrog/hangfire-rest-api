@@ -1,10 +1,10 @@
 USE [master]
 GO
 
-CREATE DATABASE TESTE
+CREATE DATABASE Agendamento_db
 GO
 
-USE Teste
+USE Agendamento_db
 GO
 
 CREATE TABLE dbo.cliente
