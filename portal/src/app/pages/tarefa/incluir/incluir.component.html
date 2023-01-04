@@ -29,12 +29,18 @@
               </nb-select>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-3">
             <div class="form-group">
               <label for="dataAgendamento" class="label">Data do agendamento</label>
               <input fullWidth nbInput placeholder="Data do agendamento" [nbDatepicker]="dateTimePicker"
                 name="dataAgendamento">
               <nb-datepicker format="dd/MM/yyyy" #dateTimePicker></nb-datepicker>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="dataAgendamento" class="label">Hora do agendamento</label>
+              <input type="time" name="HoraAgendamento" placeholder="HH:mm:ss" />
             </div>
           </div>
         </div>
@@ -43,10 +49,7 @@
             <div class="form-group">
               <label for="tipoServico" class="label">Tipo de serviço</label>
               <nb-select placeholder="Tipo de serviço" fullWidth name="tipoServico">
-                <nb-option value="1">Option 1</nb-option>
-                <nb-option value="2">Option 2</nb-option>
-                <nb-option value="3">Option 3</nb-option>
-                <nb-option value="4">Option 4</nb-option>
+                <nb-option value="1">Rest</nb-option>
               </nb-select>
             </div>
           </div>
