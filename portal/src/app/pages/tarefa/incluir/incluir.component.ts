@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'ngx-incluir-tarefa',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   templateUrl: './incluir.component.html',
 })
 export class IncluirTarefaComponent {
+
+  profileForm = this.fb.group({
+    nome: ['', Validators.required]
+  });
   
+  constructor(private fb: FormBuilder) {
+    
+  }
+  
+  onSubmit() {
+
+  }
 }
