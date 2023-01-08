@@ -1,13 +1,11 @@
-﻿using Hangfire.Annotations;
-using Hangfire.Dashboard;
-using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Hangfire.Dashboard;
 
 namespace hangfire.api.Filters
 {
     public class HangFireAuthorizationFilter : IDashboardAuthorizationFilter
     {
 
-        public bool Authorize([NotNull] DashboardContext context)
+        public bool Authorize(DashboardContext context)
         {
             return true;
         }

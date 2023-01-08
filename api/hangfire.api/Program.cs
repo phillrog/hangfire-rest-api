@@ -20,8 +20,8 @@ builder.Services.AddCors(options =>
                 .AllowAnyHeader());
 });
 
-builder.Services.AddHangFireConfiguration(builder.Configuration);
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddHttpClient();
 builder.Services.AddHealthChecks();
 // Add services to the container.
 
@@ -29,6 +29,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddHangFireConfiguration(builder.Configuration);
 
 var app = builder.Build();
 
@@ -43,14 +45,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-app.UseHangfireDashboard();
-
-app.MapControllers();
-
-app.MapHangfireDashboard("/hangfire", new DashboardOptions
+app.UseHangfireDashboard("/hangfire", new DashboardOptions
 {
     Authorization = new[] { new HangFireAuthorizationFilter() }
 });
+
+app.MapControllers();
 
 app.UseHealthChecks("/health");
 
