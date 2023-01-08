@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace hangfire.api.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class TarefaController : ControllerBase
     {
         private readonly IAgendadorService _agendadorService;
@@ -17,8 +19,10 @@ namespace hangfire.api.Controllers
         }
 
         [HttpPost("Agendar")]
-        public async Task<IActionResult> Agendar([FromBody] Agendamento agendamento)
+        public async Task<IActionResult> Agendar(Agendamento agendamento)
         {
+            if (agendamento == null) return BadRequest("Agendamento inválido");
+
             switch (agendamento.TipoAgendamento)
             {
                 case TipoAgendamentoEnum.UnicoImediato: _agendadorService.AgendarTarefaUnicaImediata(agendamento); break;
