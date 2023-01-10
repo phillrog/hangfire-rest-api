@@ -10,4 +10,5 @@
 
 export const environment = {
   production: false,
+  hangfireTarefaApi: 'https://localhost:4001/api/Tarefa/'
 };
