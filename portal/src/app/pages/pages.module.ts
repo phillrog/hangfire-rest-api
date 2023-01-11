@@ -5,13 +5,15 @@ import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { TarefaModule } from './tarefa/tarefa.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
-    TarefaModule
+    TarefaModule,
+    HttpClientModule
   ],
   declarations: [
     PagesComponent,
