@@ -1,87 +1,111 @@
-<form  [formGroup]="tarefaForm" (ngSubmit)="onSubmit()">
-<div class="row">
-  <div class="col-lg-12">
-    <nb-card>
-      <nb-card-header>Novo agendamento</nb-card-header>
-      <nb-card-body>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label for="nome" class="label">Nome</label>
-              <input type="text" nbInput fullWidth placeholder="Nome" name="nome" formCOntrolName="nome">
+<form [formGroup]="tarefaForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-lg-12">
+      <nb-card>
+        <nb-card-header>Novo agendamento</nb-card-header>
+        <nb-card-body>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="nome" class="label">Nome</label>
+                <input type="text" nbInput fullWidth placeholder="Nome" name="nome" formControlName="nome">
+                <div *ngIf="submitted && f.nome.errors" class="alert alert-danger">
+                  <div *ngIf="f.nome.errors.required">Informe o nome</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="url" class="label">Url</label>
+                <input type="text" nbInput fullWidth placeholder="Url" formControlName="url">
+                <div *ngIf="submitted && f.url.errors" class="alert alert-danger">
+                  <div *ngIf="f.url.errors.required">Informe a Url</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label for="url" class="label">Url</label>
-              <input type="text" nbInput fullWidth placeholder="url">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="tipoAgendamento" class="label">Tipo de agendamento</label>
+                <nb-select placeholder="Tipo de agendamento" fullWidth name="tipoAgendamento"
+                  formControlName="tipoAgendamento">
+                  <nb-option value="1">Único e Imediato</nb-option>
+                  <nb-option value="2">Único</nb-option>
+                  <nb-option value="3">Diário</nb-option>
+                  <nb-option value="4">Mensal</nb-option>
+                </nb-select>
+                <div *ngIf="submitted && f.tipoAgendamento.errors" class="alert alert-danger">
+                  <div *ngIf="f.tipoAgendamento.errors.required">Informe a Url</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <label for="dataAgendamento" class="label">Data do agendamento</label>
+                <input fullWidth nbInput placeholder="Data do agendamento" [nbDatepicker]="dateTimePicker"
+                  formControlName="dataAgendamento" name="dataAgendamento">
+                <nb-datepicker format="dd/MM/yyyy" #dateTimePicker></nb-datepicker>
+                <div *ngIf="submitted && f.dataAgendamento.errors" class="alert alert-danger">
+                  <div *ngIf="f.dataAgendamento.errors.required">Informe a Url</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <label for="horaAgendamento" class="label">Hora do agendamento</label>
+                <input type="time" nbInput fullWidth name="horaAgendamento" placeholder="HH:mm"
+                  formControlName="horaAgendamento" />
+                <div *ngIf="submitted && f.horaAgendamento.errors" class="alert alert-danger">
+                  <div *ngIf="f.horaAgendamento.errors.required">Informe a Url</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label for="tipoAgendamento" class="label">Tipo de agendamento</label>
-              <nb-select placeholder="Tipo de agendamento" fullWidth name="tipoAgendamento">
-                <nb-option value="1">Único e Imediato</nb-option>
-                <nb-option value="2">Único</nb-option>
-                <nb-option value="3">Diário</nb-option>
-                <nb-option value="4">Mensal</nb-option>
-              </nb-select>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="tipoServico" class="label">Tipo de serviço</label>
+                <nb-select placeholder="Tipo de serviço" fullWidth name="tipoServico" formControlName="tipoServico">
+                  <nb-option value="1">Rest</nb-option>
+                </nb-select>
+                <div *ngIf="submitted && f.tipoServico.errors" class="alert alert-danger">
+                  <div *ngIf="f.tipoServico.errors.required">Informe o Tipo de Serviço</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="form-group">
+                <label for="tipoVerbo" class="label">Tipo de verbo</label>
+                <nb-select placeholder="Tipo de verbo" fullWidth name="tipoVerbo" formControlName="tipoVerbo">
+                  <nb-option value="1">GET</nb-option>
+                  <nb-option value="2">POST</nb-option>
+                  <nb-option value="3">PUT</nb-option>
+                  <nb-option value="4">DELETE</nb-option>
+                </nb-select>
+                <div *ngIf="submitted && f.tipoVerbo.errors" class="alert alert-danger">
+                  <div *ngIf="f.tipoVerbo.errors.required">Informe o Tipo de Verbo</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-3">
-            <div class="form-group">
-              <label for="dataAgendamento" class="label">Data do agendamento</label>
-              <input fullWidth nbInput placeholder="Data do agendamento" [nbDatepicker]="dateTimePicker"
-                name="dataAgendamento">
-              <nb-datepicker format="dd/MM/yyyy" #dateTimePicker></nb-datepicker>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="payload" class="label">Payload</label>
+                <textarea nbInput fullWidth placeholder="Payload" name="payload" rows="10" cols="80"
+                  formControlName="payload"></textarea>
+              </div>
             </div>
           </div>
-          <div class="col-3">
-            <div class="form-group">
-              <label for="dataAgendamento" class="label">Hora do agendamento</label>
-              <input type="time" name="HoraAgendamento" placeholder="HH:mm:ss" />
+          <section class="row">
+            <div class="col-lg-12 text-right">
+              <button nbButton status="primary">Salvar</button>
+              <button nbButton status="basic">Fechar</button>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label for="tipoServico" class="label">Tipo de serviço</label>
-              <nb-select placeholder="Tipo de serviço" fullWidth name="tipoServico">
-                <nb-option value="1">Rest</nb-option>
-              </nb-select>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label for="tipoVerbo" class="label">Tipo de verbo</label>
-              <nb-select placeholder="Tipo de verbo" fullWidth name="tipoVerbo">
-                <nb-option value="1">GET</nb-option>
-                <nb-option value="2">POST</nb-option>
-                <nb-option value="3">PUT</nb-option>
-                <nb-option value="4">DELETE</nb-option>
-              </nb-select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="form-group">
-              <label for="payload" class="label">Payload</label>
-              <textarea nbInput fullWidth placeholder="Payload" name="payload" rows="10" cols="80"></textarea>
-            </div>
-          </div>
-        </div>
-        <section class="row">
-          <div class="col-lg-12 text-right">
-            <button nbButton status="primary">Salvar</button>
-            <button nbButton status="basic">Fechar</button>
-          </div>
-        </section>
-      </nb-card-body>
-    </nb-card>
+          </section>
+        </nb-card-body>
+      </nb-card>
+    </div>
   </div>
-</div>
 </form>
