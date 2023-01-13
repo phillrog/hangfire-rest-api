@@ -20,23 +20,42 @@ export enum VerboEnum {
 }
 
 export class TarefaModel {
-    public Id: any;
-	public Nome: string;
-	public NomeCompleto: string;
-	public Url: string;
-	public Body: any;
-	public DataAgendamento: Date;
-	public HoraAgendamento: string;
-	public DataInicio: Date;
-	public TipoAgendamento: AgendamentoEnum;
-	public Agendamento: string;
-	public TipoVerbo: VerboEnum;
-	public Horas: number;
-	public Minutos: number;
-	public Verbo: string;
-	public TipoService: ServiceEnum;
-	public Service: string;
-	public Selecionado: boolean;
-	public Edicao: boolean;
-    public Ativo: boolean;
+    Id: any;
+	Nome: string;
+	NomeCompleto: string;
+	Url: string;
+	Body: any;
+	DataAgendamento: Date;
+	HoraAgendamento: string;
+	DataInicio: Date;
+	TipoAgendamento: AgendamentoEnum;
+	Agendamento: string;
+	TipoVerbo: VerboEnum;
+	Horas: number;
+	Minutos: number;
+	Verbo: string;
+	TipoService: ServiceEnum;
+	Service: string;
+	Selecionado: boolean;
+	Edicao: boolean;
+    Ativo: boolean;
+
+	/**
+	 *
+	 */
+	constructor(nome: string, url: string, dataAgendamento: Date, horaAgendamento: string,
+		tipoAgendamento: number,
+		tipoServico: number,
+		tipoVerbo: number,
+		payload: string
+		) {
+		this.Nome = nome;
+		this.Url = url;
+		this.DataAgendamento = dataAgendamento;
+		this.HoraAgendamento = horaAgendamento;
+		this.TipoAgendamento = tipoAgendamento;
+		this.TipoService = tipoServico;
+		this.TipoVerbo = tipoVerbo;
+		this.Body = payload;
+	}
 }
