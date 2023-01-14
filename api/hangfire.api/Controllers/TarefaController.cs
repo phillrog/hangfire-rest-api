@@ -17,7 +17,7 @@ namespace hangfire.api.Controllers
             _agendadorService = agendadorService;
         }
 
-        [HttpPost("Agendar")]
+        [HttpPost("agendar")]
         public async Task<IActionResult> Agendar(Agendamento agendamento)
         {
             if (agendamento == null) return BadRequest("Agendamento inválido");
@@ -28,6 +28,14 @@ namespace hangfire.api.Controllers
             var tipoAgendamento = tiposAgendamentos[(int)agendamento.TipoAgendamento];
 
             return Ok(new { sucesso = $"Agendamento '{tipoAgendamento}' de tarefa realizado com sucesso" });
+        }
+
+        [HttpGet("listar")]
+        public async Task<IActionResult> Listar()
+        {            
+            var lista = await _agendadorService.ListarTarefasAgendadas();
+
+            return Ok(lista);
         }
     }
 }
