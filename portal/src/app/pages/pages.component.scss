@@ -16,3 +16,18 @@
     }
   }
 }
+
+::ng-deep nb-icon {
+  font-size: 1.5rem;
+  line-height: 2;
+  width: 2em !important;
+  height: 2em !important;
+  color:#5670a1;
+  display: inline-block;
+  &:hover {
+      cursor: pointer;        
+      ::ng-deep svg {
+          fill: #36f !important;
+      }
+  }
+}

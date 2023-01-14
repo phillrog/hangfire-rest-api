@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TarefaService } from '../services/tarefa.service';
 
 @Component({
@@ -13,9 +14,9 @@ export class IncluirTarefaComponent implements OnInit {
   submitted = false;
   
   constructor(private fb: FormBuilder,
-    private tarefaService: TarefaService) {
-    
-  }
+    private tarefaService: TarefaService,
+    private router: Router,
+    private route: ActivatedRoute ) {}  
 
   ngOnInit(): void {
       this.criarForm();
@@ -29,6 +30,7 @@ export class IncluirTarefaComponent implements OnInit {
       const param = this.tarefaService.toModel(this.tarefaForm.value);
       this.tarefaService.agendar(param).subscribe((response: any) => {
           this.resetarForm();
+          this.volarParaLista();
       })
   }
 
@@ -37,7 +39,7 @@ export class IncluirTarefaComponent implements OnInit {
         nome: ['teste', Validators.required],
         url: ['https://www.google.com/', Validators.required],
         tipoAgendamento: ['1', Validators.required],
-        dataAgendamento: ['', Validators.required],
+        dataAgendamento: [''],
         horaAgendamento: ['', Validators.required],
         tipoServico: ['1', Validators.required],
         tipoVerbo: ['1', Validators.required],
@@ -52,4 +54,8 @@ export class IncluirTarefaComponent implements OnInit {
   }
 
   get f() { return this.tarefaForm.controls; }
+
+  volarParaLista() {
+    this.router.navigate(['../listar'], {relativeTo: this.route});
+  }
 }

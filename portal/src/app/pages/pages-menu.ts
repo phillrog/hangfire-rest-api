@@ -7,7 +7,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Tarefa',
-        link: '/pages/tarefas/incluir',
+        link: '/pages/tarefas/listar',
       }
     ],
   }

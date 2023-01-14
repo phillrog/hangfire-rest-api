@@ -2,7 +2,18 @@
   <div class="row">
     <div class="col-lg-12">
       <nb-card>
-        <nb-card-header>Novo agendamento</nb-card-header>
+        <nb-card-header>
+          <div class="row">
+            <div class="col-lg-6">
+              <h3>Novo Agendamento</h3>
+            </div>
+            <div class="col-lg-6 text-right">
+              <nb-icon icon="arrow-back" nbTooltip="Voltar" [nbTooltipIcon]="{icon: 'arrow-back', pack: 'eva'}"
+                nbTooltipStatus="info" nbTooltipPlacement="left" (click)="volarParaLista()"></nb-icon>
+            </div>
+          </div>
+        </nb-card-header>
+        <nb-card-header></nb-card-header>
         <nb-card-body>
           <div class="row">
             <div class="col-lg-6">
@@ -47,7 +58,8 @@
                   formControlName="dataAgendamento" name="dataAgendamento">
                 <nb-datepicker format="dd/MM/yyyy" #dateTimePicker></nb-datepicker>
                 <div *ngIf="submitted && f.dataAgendamento.errors" class="alert alert-danger">
-                  <div *ngIf="f.dataAgendamento.errors.required">Informe a Url</div>
+                  <div *ngIf="f.dataAgendamento.errors.required">Informe a Data do Agendamento</div>
+                  {{f.dataAgendamento.errors | json}}
                 </div>
               </div>
             </div>
@@ -57,7 +69,7 @@
                 <input type="time" nbInput fullWidth name="horaAgendamento" placeholder="HH:mm"
                   formControlName="horaAgendamento" />
                 <div *ngIf="submitted && f.horaAgendamento.errors" class="alert alert-danger">
-                  <div *ngIf="f.horaAgendamento.errors.required">Informe a Url</div>
+                  <div *ngIf="f.horaAgendamento.errors.required">Informe a Hora do Agendamento</div>
                 </div>
               </div>
             </div>
@@ -101,7 +113,7 @@
           <section class="row">
             <div class="col-lg-12 text-right">
               <button nbButton status="primary">Salvar</button>
-              <button nbButton status="basic">Fechar</button>
+              <button nbButton status="basic" (click)="volarParaLista()">Fechar</button>
             </div>
           </section>
         </nb-card-body>

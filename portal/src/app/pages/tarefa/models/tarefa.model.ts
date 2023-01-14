@@ -20,7 +20,7 @@ export enum VerboEnum {
 }
 
 export class TarefaModel {
-    Id: any;
+	Id: any;
 	Nome: string;
 	NomeCompleto: string;
 	Url: string;
@@ -38,17 +38,18 @@ export class TarefaModel {
 	Service: string;
 	Selecionado: boolean;
 	Edicao: boolean;
-    Ativo: boolean;
+	Ativo: boolean;
 
 	/**
 	 *
 	 */
-	constructor(nome: string, url: string, dataAgendamento: Date, horaAgendamento: string,
+	constructor(id: string, nome: string, url: string, dataAgendamento: Date, horaAgendamento: string,
 		tipoAgendamento: number,
 		tipoServico: number,
 		tipoVerbo: number,
 		payload: string
-		) {
+	) {
+		this.Id = id;
 		this.Nome = nome;
 		this.Url = url;
 		this.DataAgendamento = dataAgendamento;
