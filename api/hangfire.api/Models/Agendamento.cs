@@ -15,5 +15,6 @@ namespace hangfire.api.Models
         public TipoAgendamentoEnum TipoAgendamento { get; set; }
         public TipoVerboEnum TipoVerbo { get; set; }
         public bool Async { get; set; }
+        public TipoServiceEnum TipoService { get; set; }
     }
 }
