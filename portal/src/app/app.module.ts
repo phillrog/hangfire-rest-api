@@ -21,6 +21,12 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+import {NbDateFnsDateModule} from '@nebular/date-fns'
+
+registerLocaleData(ptBr);
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -39,9 +45,10 @@ import {
     }),
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
-   
+    NbDateFnsDateModule.forRoot({ format: 'dd/MM/yyyy' })
   ],
   bootstrap: [AppComponent],
+  providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
 })
 export class AppModule {
 }

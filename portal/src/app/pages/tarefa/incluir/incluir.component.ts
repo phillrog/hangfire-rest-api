@@ -36,8 +36,8 @@ export class IncluirTarefaComponent implements OnInit {
 
   criarForm() {
       this.tarefaForm = this.fb.group({
-        nome: ['teste', Validators.required],
-        url: ['https://www.google.com/', Validators.required],
+        nome: ['', Validators.required],
+        url: ['', Validators.required],
         tipoAgendamento: ['1', Validators.required],
         dataAgendamento: [''],
         horaAgendamento: ['', Validators.required],
