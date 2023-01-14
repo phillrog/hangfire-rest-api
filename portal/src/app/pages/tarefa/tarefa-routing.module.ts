@@ -2,18 +2,23 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { IncluirTarefaComponent } from './incluir/incluir.component';
+import { ListarComponent } from './listar/listar.component';
 
 const routes: Routes = [
   {
-    path: '',
-    component: IncluirTarefaComponent,
+    path: '',    
     children: [
+      {
+        path: 'listar',
+        component: ListarComponent,
+      },
       {
         path: 'incluir',
         component: IncluirTarefaComponent,
       }
     ],
-  },
+  }
+
 ];
 
 @NgModule({

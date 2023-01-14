@@ -1,0 +1,32 @@
+<nb-card>
+    <nb-card-header>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Lista de Agendamentos</h3>
+            </div>
+            <div class="col-lg-6 text-right">
+                <nb-icon icon="plus-circle" nbTooltip="Adicionar novo agendamento"
+                    [nbTooltipIcon]="{icon: 'plus-circle-outline', pack: 'eva'}" nbTooltipStatus="info"
+                    nbTooltipPlacement="left" (click)="incluir()"></nb-icon>
+            </div>
+        </div>
+
+    </nb-card-header>
+    <nb-card-body>
+        <table [nbTreeGrid]="dataSource" [nbSort]="dataSource" (sort)="updateSort($event)">
+
+            <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+            <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+            <ng-container *ngFor="let column of defaultColumns; let index = index" [nbTreeGridColumnDef]="column"
+                [showOn]="getShowOn(index)">
+                <th nbTreeGridHeaderCell [nbSortHeader]="getSortDirection(column)" *nbTreeGridHeaderCellDef>
+                    {{ defaultName[column]}}
+                </th>                
+                <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
+            </ng-container>
+
+        </table>
+    </nb-card-body>
+    <nb-card-footer></nb-card-footer>
+</nb-card>
