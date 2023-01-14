@@ -3,9 +3,11 @@ import { NbInputModule, NbCardModule, NbButtonModule, NbActionsModule, NbCheckbo
 import { IncluirTarefaComponent } from "./incluir/incluir.component";
 import { TarefaRoutingModule } from "./tarefa-routing.module";
 import { FormsModule, FormsModule as ngFormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   imports: [
+    CommonModule,
     NbInputModule,
     NbCardModule,
     NbButtonModule,
