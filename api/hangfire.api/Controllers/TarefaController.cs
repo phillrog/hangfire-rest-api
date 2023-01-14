@@ -2,7 +2,6 @@
 using hangfire.api.Extensions;
 using hangfire.api.Models;
 using hangfire.api.Services;
-using Hangfire;
 using Microsoft.AspNetCore.Mvc;
 
 namespace hangfire.api.Controllers
@@ -23,10 +22,7 @@ namespace hangfire.api.Controllers
         {
             if (agendamento == null) return BadRequest("Agendamento inválido");
 
-            switch (agendamento.TipoAgendamento)
-            {
-                case TipoAgendamentoEnum.UnicoImediato: _agendadorService.AgendarTarefaUnicaImediata(agendamento); break;
-            }
+            await _agendadorService.Agendar(agendamento);
 
             var tiposAgendamentos = typeof(TipoAgendamentoEnum).ToEnumList();
             var tipoAgendamento = tiposAgendamentos[(int)agendamento.TipoAgendamento];
